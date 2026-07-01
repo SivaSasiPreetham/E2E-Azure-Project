@@ -37,7 +37,7 @@
 								},
 								"sink": {
 									"type": "AzureSqlSink",
-									"preCopyScript": "TRUNCATE TABLE dbo.tuton;",
+									"preCopyScript": "TRUNCATE TABLE dbo.tutondata;",
 									"writeBehavior": "insert",
 									"sqlWriterUseTableLock": false,
 									"disableMetricsCollection": false
