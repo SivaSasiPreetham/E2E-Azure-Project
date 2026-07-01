@@ -156,7 +156,7 @@
 							}
 						},
 						{
-							"name": "SQL-TO-DL",
+							"name": "SQLtoDL",
 							"type": "Copy",
 							"dependsOn": [
 								{
@@ -229,7 +229,7 @@
 							"type": "IfCondition",
 							"dependsOn": [
 								{
-									"activity": "SQL-TO-DL",
+									"activity": "SQLtoDL",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -238,7 +238,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@greater(activity('SQL-to-DL').output.dataRead,0)",
+									"value": "@greater(activity('SQLtoDL').output.dataRead,0)",
 									"type": "Expression"
 								},
 								"ifFalseActivities": [
