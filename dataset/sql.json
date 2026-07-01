@@ -1,0 +1,142 @@
+{
+	"name": "sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQL TO ADF",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "index",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Date",
+				"type": "date"
+			},
+			{
+				"name": "User_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Age_in_Months",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Gender",
+				"type": "varchar"
+			},
+			{
+				"name": "Location",
+				"type": "varchar"
+			},
+			{
+				"name": "Grade",
+				"type": "varchar"
+			},
+			{
+				"name": "Logins_per_Month",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Days_Completed_Activity",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Exercises_Started",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "Total_Time_Spent_in_Minutes",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "Course_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Course_Category",
+				"type": "varchar"
+			},
+			{
+				"name": "Completion_Rate",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "Average_Score",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "Course_Rating",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Recommendation_Likelihood",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Exercises_Completed",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Points_Earned",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "Subscription_Tier",
+				"type": "varchar"
+			},
+			{
+				"name": "Subscription_Cost",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "Subscription_Length_in_Months",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Renewal_Status",
+				"type": "varchar"
+			},
+			{
+				"name": "Tutoring",
+				"type": "varchar"
+			},
+			{
+				"name": "Referrals",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Academic_Grade",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tutondata"
+		}
+	}
+}

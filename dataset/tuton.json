@@ -1,0 +1,123 @@
+{
+	"name": "tuton",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADL TO ADF",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Tutoring Dataset",
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Tutoring_Dataset_with_Date.xlsx",
+				"folderPath": "Excel",
+				"fileSystem": "data"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "User_ID",
+				"type": "String"
+			},
+			{
+				"name": "Age_in_Months",
+				"type": "String"
+			},
+			{
+				"name": "Gender",
+				"type": "String"
+			},
+			{
+				"name": "Location",
+				"type": "String"
+			},
+			{
+				"name": "Grade",
+				"type": "String"
+			},
+			{
+				"name": "Logins_per_Month",
+				"type": "String"
+			},
+			{
+				"name": "Days_Completed_Activity",
+				"type": "String"
+			},
+			{
+				"name": "Exercises_Started",
+				"type": "String"
+			},
+			{
+				"name": "Total_Time_Spent_in_Minutes",
+				"type": "String"
+			},
+			{
+				"name": "Course_Name",
+				"type": "String"
+			},
+			{
+				"name": "Course_Category",
+				"type": "String"
+			},
+			{
+				"name": "Completion_Rate",
+				"type": "String"
+			},
+			{
+				"name": "Average_Score",
+				"type": "String"
+			},
+			{
+				"name": "Course_Rating",
+				"type": "String"
+			},
+			{
+				"name": "Recommendation_Likelihood",
+				"type": "String"
+			},
+			{
+				"name": "Exercises_Completed",
+				"type": "String"
+			},
+			{
+				"name": "Points_Earned",
+				"type": "String"
+			},
+			{
+				"name": "Subscription_Tier",
+				"type": "String"
+			},
+			{
+				"name": "Subscription_Cost",
+				"type": "String"
+			},
+			{
+				"name": "Subscription_Length_in_Months",
+				"type": "String"
+			},
+			{
+				"name": "Renewal_Status",
+				"type": "String"
+			},
+			{
+				"name": "Tutoring",
+				"type": "String"
+			},
+			{
+				"name": "Referrals",
+				"type": "String"
+			},
+			{
+				"name": "Academic_Grade",
+				"type": "String"
+			}
+		]
+	}
+}
