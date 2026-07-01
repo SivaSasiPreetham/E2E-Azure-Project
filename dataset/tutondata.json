@@ -1,0 +1,20 @@
+{
+	"name": "tutondata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADL TO ADF",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Tutoring_Dataset_with_Date.xlsx",
+				"folderPath": "Excel",
+				"fileSystem": "data"
+			}
+		},
+		"schema": []
+	}
+}

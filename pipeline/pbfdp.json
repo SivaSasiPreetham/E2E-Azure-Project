@@ -368,7 +368,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "tuton",
+									"referenceName": "tutondata",
 									"type": "DatasetReference"
 								}
 							],
@@ -649,7 +649,7 @@
 				"defaultValue": [
 					{
 						"schema": "dbo",
-						"table": "tuton",
+						"table": "tutondata",
 						"cdc_col": "Date",
 						"from_date": "",
 						"end_date": ""
