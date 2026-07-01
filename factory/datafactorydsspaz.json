@@ -1,0 +1,15 @@
+{
+	"name": "datafactorydsspaz",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "canadacentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ddffe23d-5e7e-4af5-a4d6-c5c9d9f69bb0",
+		"tenantId": "317f37ca-f1a5-403b-9962-005c0b2c7806"
+	}
+}
