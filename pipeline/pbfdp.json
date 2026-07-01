@@ -335,7 +335,7 @@
 				"defaultValue": [
 					{
 						"schema": "dbo",
-						"table": "tutdata",
+						"table": "tutondata",
 						"cdc_col": "Date",
 						"from_date": "",
 						"end_date": ""
