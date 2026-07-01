@@ -15,7 +15,7 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "XL-to-SQL",
+							"name": "XLtoSQL",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
@@ -70,7 +70,7 @@
 							"type": "SetVariable",
 							"dependsOn": [
 								{
-									"activity": "XL-to-SQL",
+									"activity": "XLtoSQL",
 									"dependencyConditions": [
 										"Succeeded"
 									]
