@@ -238,7 +238,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@greater(activity('SQL to DL').output.dataRead,0)",
+									"value": "@greater(activity('SQL-to-DL').output.dataRead,0)",
 									"type": "Expression"
 								},
 								"ifFalseActivities": [
