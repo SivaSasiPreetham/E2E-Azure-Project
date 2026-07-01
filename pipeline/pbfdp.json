@@ -45,6 +45,320 @@
 								"enableStaging": false,
 								"translator": {
 									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"name": "Date",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Date",
+												"type": "Date",
+												"physicalType": "date"
+											}
+										},
+										{
+											"source": {
+												"name": "User_ID",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "User_ID",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Age_in_Months",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Age_in_Months",
+												"type": "Int32",
+												"physicalType": "int"
+											}
+										},
+										{
+											"source": {
+												"name": "Gender",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Gender",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Location",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Location",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Grade",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Grade",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Logins_per_Month",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Logins_per_Month",
+												"type": "Int32",
+												"physicalType": "int"
+											}
+										},
+										{
+											"source": {
+												"name": "Days_Completed_Activity",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Days_Completed_Activity",
+												"type": "Int32",
+												"physicalType": "int"
+											}
+										},
+										{
+											"source": {
+												"name": "Exercises_Started",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Exercises_Started",
+												"type": "Decimal",
+												"physicalType": "decimal",
+												"scale": 2,
+												"precision": 10
+											}
+										},
+										{
+											"source": {
+												"name": "Total_Time_Spent_in_Minutes",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Total_Time_Spent_in_Minutes",
+												"type": "Decimal",
+												"physicalType": "decimal",
+												"scale": 2,
+												"precision": 10
+											}
+										},
+										{
+											"source": {
+												"name": "Course_Name",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Course_Name",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Course_Category",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Course_Category",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Completion_Rate",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Completion_Rate",
+												"type": "Decimal",
+												"physicalType": "decimal",
+												"scale": 2,
+												"precision": 10
+											}
+										},
+										{
+											"source": {
+												"name": "Average_Score",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Average_Score",
+												"type": "Decimal",
+												"physicalType": "decimal",
+												"scale": 2,
+												"precision": 10
+											}
+										},
+										{
+											"source": {
+												"name": "Course_Rating",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Course_Rating",
+												"type": "Int32",
+												"physicalType": "int"
+											}
+										},
+										{
+											"source": {
+												"name": "Recommendation_Likelihood",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Recommendation_Likelihood",
+												"type": "Int32",
+												"physicalType": "int"
+											}
+										},
+										{
+											"source": {
+												"name": "Exercises_Completed",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Exercises_Completed",
+												"type": "Int32",
+												"physicalType": "int"
+											}
+										},
+										{
+											"source": {
+												"name": "Points_Earned",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Points_Earned",
+												"type": "Decimal",
+												"physicalType": "decimal",
+												"scale": 2,
+												"precision": 10
+											}
+										},
+										{
+											"source": {
+												"name": "Subscription_Tier",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Subscription_Tier",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Subscription_Cost",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Subscription_Cost",
+												"type": "Decimal",
+												"physicalType": "decimal",
+												"scale": 2,
+												"precision": 10
+											}
+										},
+										{
+											"source": {
+												"name": "Subscription_Length_in_Months",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Subscription_Length_in_Months",
+												"type": "Int32",
+												"physicalType": "int"
+											}
+										},
+										{
+											"source": {
+												"name": "Renewal_Status",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Renewal_Status",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Tutoring",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Tutoring",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Referrals",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Referrals",
+												"type": "Int32",
+												"physicalType": "int"
+											}
+										},
+										{
+											"source": {
+												"name": "Academic_Grade",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Academic_Grade",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										}
+									],
 									"typeConversion": true,
 									"typeConversionSettings": {
 										"allowDataTruncation": true,
@@ -335,7 +649,7 @@
 				"defaultValue": [
 					{
 						"schema": "dbo",
-						"table": "tutondata",
+						"table": "tuton",
 						"cdc_col": "Date",
 						"from_date": "",
 						"end_date": ""
