@@ -14,7 +14,8 @@
 				"fileName": "Tutoring_Dataset_with_Date.xlsx",
 				"folderPath": "Excel",
 				"fileSystem": "data"
-			}
+			},
+			"firstRowAsHeader": true
 		},
 		"schema": []
 	}
