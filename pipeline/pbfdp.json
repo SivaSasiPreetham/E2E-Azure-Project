@@ -3,141 +3,346 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "XL-to-SQL",
-				"type": "Copy",
+				"name": "tutonForEach",
+				"type": "ForEach",
 				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "ExcelSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						}
+					"items": {
+						"value": "@pipeline().parameters.loop_input",
+						"type": "Expression"
 					},
-					"sink": {
-						"type": "AzureSqlSink",
-						"preCopyScript": "TRUNCATE TABLE dbo.tuton;",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false,
-						"disableMetricsCollection": false
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "tuton",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "sql",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
-				"name": "current",
-				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "XL-to-SQL",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "current",
-					"value": "@formatDateTime(utcNow(),'yyyy-MM-dd HH:mm:ss')"
-				}
-			},
-			{
-				"name": "current_file",
-				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "current",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "current_file",
-					"value": "@formatDateTime(utcNow(),'yyyy-MM-dd HH:mm:ss')"
-				}
-			},
-			{
-				"name": "last_cdc",
-				"type": "Lookup",
-				"dependsOn": [
-					{
-						"activity": "current_file",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "JsonSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "XL-to-SQL",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "ExcelSource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": true,
+										"enablePartitionDiscovery": false
+									}
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"preCopyScript": "TRUNCATE TABLE dbo.tuton;",
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false,
+									"disableMetricsCollection": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "tuton",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "sql",
+									"type": "DatasetReference"
+								}
+							]
 						},
-						"formatSettings": {
-							"type": "JsonReadSettings"
+						{
+							"name": "current",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "XL-to-SQL",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "current",
+								"value": {
+									"value": "@formatDateTime(utcNow(),'yyyy-MM-dd HH:mm:ss')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "current_file",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "current",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "current_file",
+								"value": {
+									"value": "@formatDateTime(utcNow(),'yyyy-MM-dd HH:mm:ss')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "last_cdc",
+							"type": "Lookup",
+							"dependsOn": [
+								{
+									"activity": "current_file",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "JsonSource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": true,
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "JsonReadSettings"
+									}
+								},
+								"dataset": {
+									"referenceName": "cdc_json",
+									"type": "DatasetReference",
+									"parameters": {
+										"container": "bronze",
+										"folder": "@concat(item().table, '_cdc')",
+										"file": "cdc.json"
+									}
+								}
+							}
+						},
+						{
+							"name": "SQL-TO-DL",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "last_cdc",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": "SELECT * \nFROM @{item().schema}.@{item().table}\nWHERE @{item().cdc_col} > \n'@{if(\n    empty(item().from_date),\n    activity('last_cdc').output.firstRow.cdc,\n    item().from_date\n)}'\nAND @{item().cdc_col} <= \n'@{if(\n    empty(item().end_date),\n    variables('current'),\n    item().end_date\n)}'",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "sql",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Parquet_dynamic",
+									"type": "DatasetReference",
+									"parameters": {
+										"container": {
+											"value": "bronze",
+											"type": "Expression"
+										},
+										"folder": "@item().table",
+										"file": {
+											"value": "@concat(item().table,'_',variables('current_file'),'.parquet')",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						},
+						{
+							"name": "If_incremental",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "SQL-TO-DL",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@greater(activity('SQL to DL').output.dataRead,0)",
+									"type": "Expression"
+								},
+								"ifFalseActivities": [
+									{
+										"name": "Delete_Empty_File",
+										"type": "Delete",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"dataset": {
+												"referenceName": "Parquet_dynamic",
+												"type": "DatasetReference",
+												"parameters": {
+													"container": "bronze",
+													"folder": "@item().table",
+													"file": "@concat(item().table,'_',variables('current_file'),'.parquet')"
+												}
+											},
+											"enableLogging": false,
+											"storeSettings": {
+												"type": "AzureBlobFSReadSettings",
+												"recursive": true,
+												"enablePartitionDiscovery": false
+											}
+										}
+									}
+								],
+								"ifTrueActivities": [
+									{
+										"name": "last_updated_cdc",
+										"type": "Copy",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"source": {
+												"type": "AzureSqlSource",
+												"sqlReaderQuery": "SELECT \n    COALESCE(\n        CONVERT(VARCHAR(10), MAX([@{item().cdc_col}]), 23),\n        '@{if(empty(item().from_date), activity('last_cdc').output.firstRow.cdc, item().from_date)}'\n    ) AS cdc\nFROM [@{item().schema}].[@{item().table}]\nWHERE [@{item().cdc_col}] > \n'@{if(\n    empty(item().from_date),\n    activity('last_cdc').output.firstRow.cdc,\n    item().from_date\n)}'\nAND [@{item().cdc_col}] <= \n'@{if(\n    empty(item().end_date),\n    variables('current'),\n    item().end_date\n)}'",
+												"queryTimeout": "02:00:00",
+												"partitionOption": "None"
+											},
+											"sink": {
+												"type": "JsonSink",
+												"storeSettings": {
+													"type": "AzureBlobFSWriteSettings"
+												},
+												"formatSettings": {
+													"type": "JsonWriteSettings"
+												}
+											},
+											"enableStaging": false
+										},
+										"inputs": [
+											{
+												"referenceName": "sql",
+												"type": "DatasetReference"
+											}
+										],
+										"outputs": [
+											{
+												"referenceName": "cdc_json",
+												"type": "DatasetReference",
+												"parameters": {
+													"container": "bronze",
+													"folder": "@concat(item().table, '_cdc')",
+													"file": "cdc.json"
+												}
+											}
+										]
+									}
+								]
+							}
 						}
-					},
-					"dataset": {
-						"referenceName": "cdc_json",
-						"type": "DatasetReference",
-						"parameters": {
-							"container": "bronze",
-							"folder": "@concat(item().table, '_cdc')",
-							"file": "cdc.json"
-						}
-					}
+					]
 				}
 			}
 		],
+		"parameters": {
+			"loop_input": {
+				"type": "string",
+				"defaultValue": [
+					{
+						"schema": "dbo",
+						"table": "tutdata",
+						"cdc_col": "Date",
+						"from_date": "",
+						"end_date": ""
+					}
+				]
+			}
+		},
 		"variables": {
 			"current": {
 				"type": "String"
